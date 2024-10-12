@@ -9,7 +9,7 @@ SRCS = main.c\
 	philo_operation2.c
 
 CC = cc
-CFLAGS =  -Wall -Wextra -Werror -g
+CFLAGS =  -Wall -Wextra -Werror -g -fsanitize=thread
 OBJS = $(SRCS:.c=.o)
 all: $(NAME)
 $(NAME): $(OBJS)
