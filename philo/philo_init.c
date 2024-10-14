@@ -27,6 +27,7 @@ void	lst_philo_init(t_table_data *tbl)
 		tbl->lst_philos[i].philo_id = i + 1;
 		tbl->lst_philos[i].is_max_num_of_meals = 0;
 		tbl->lst_philos[i].num_of_eaten = 0;
+		tbl->lst_philos[i].last_eating_time = 0;
 		tbl->lst_philos[i].tb_data = tbl;
 		fork_assigment_init(i, tbl);
 		if (pthread_mutex_init(&tbl->lst_philos[i].philo_mutex, NULL) != 0)
