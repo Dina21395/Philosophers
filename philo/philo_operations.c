@@ -23,14 +23,13 @@ void	ft_eat(t_philo *curr_philo)
 	if (pthread_mutex_lock(&curr_philo->philo_mutex) != 0)
 		error_free_exit("fail philo mutex lock", curr_philo->tb_data);
 	curr_philo->last_eating_time = get_curr_time_ml(curr_philo->tb_data);
+	curr_philo->num_of_eaten++;
 	if (pthread_mutex_unlock(&curr_philo->philo_mutex) != 0)
 		error_free_exit("fail philo mutex unlock", curr_philo->tb_data);
-	curr_philo->num_of_eaten++;
 	print_philo_state(EAT, curr_philo);
 	ft_sleep(curr_philo->tb_data->time_to_eat, curr_philo->tb_data);
 	if (curr_philo->tb_data->number_of_times_philo_eat != -1
-		&& (curr_philo->num_of_eaten
-			== curr_philo->tb_data->number_of_times_philo_eat))
+		&& (curr_philo->num_of_eaten == curr_philo->tb_data->number_of_times_philo_eat))
 	{
 		if (pthread_mutex_lock(&curr_philo->philo_mutex) != 0)
 			error_free_exit("fail philo mutex lock", curr_philo->tb_data);
